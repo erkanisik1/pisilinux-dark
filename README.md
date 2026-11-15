@@ -1,5 +1,7 @@
 # Pisi Linux Dark
 
+**Türkçe** · [English](README.en.md)
+
 KDE Plasma 6 için hazırlanmış koyu renkli masaüstü teması. Pisi Linux'un kurumsal kimliğini Plasma masaüstüne taşıyan tema; koyu gri tonları üzerine turkuaz vurgu rengi kullanır ve duvar kağıdı, renk şeması, açılış (splash) ekranı, kilit ekranı ve oturum kapatma ekranlarını tek bir pakette birleştirir.
 
 ![Pisi Linux Dark önizleme](usr/share/plasma/look-and-feel/pisilinux-dark/contents/previews/preview.png)
@@ -21,7 +23,7 @@ Depo, dosyaları doğrudan yerleşim yollarıyla (`usr/share/...`) içerir; böy
 
 ### Görünüm ve his paketi
 
-Tek seferde tutarlı bir görünüm kuran varsayılanlar:
+Tek seferde tutarlı bir görünüm kuran varsayılanlar (`contents/defaults`):
 
 - **Renk şeması:** `PisilinuxDark`
 - **Pencere dekorasyonu:** Breeze
@@ -29,8 +31,14 @@ Tek seferde tutarlı bir görünüm kuran varsayılanlar:
 - **Simge teması:** Kora
 - **İmleç teması:** Mevlana
 - **Duvar kağıdı:** Pisi Linux 2.4.4
-- **Açılış ekranı:** Pisi logosu ve animasyonlu `Pisi.gif` içeren özel splash
-- **Kilit ekranı, oturum kapatma ekranı, OSD ve pencere değiştirici:** Breeze düzenleri üzerine Pisi Linux görselleri
+
+### Ekranlar
+
+- **Açılış ekranı (splash):** `contents/splash/` — Pisi Linux arka planı ve animasyonlu `Pisi.gif` logosu.
+- **Kilit ekranı:** `contents/lockscreen/` — `LockScreen.qml`, `LockScreenUi.qml`, `MainBlock.qml`, `ChangeSession.qml` ve `LockOsd.qml`. Arka plan olarak paket içindeki `lockscreen/background.png` kullanılır.
+- **Oturum kapatma ekranı:** `contents/logout/` — Plasma 6 API'sine uyarlanmış, Breeze tabanlı `Logout.qml`, `LogoutButton.qml` ve geri sayım için `timer.js`. Varsayılan olarak 30 saniyelik geri sayım sonunda seçili eylem uygulanır.
+- **Önizlemeler:** `contents/previews/` — Sistem Ayarları'nda gösterilen `preview.png`, `lockscreen.png` ve `splash.png`.
+- **Diğer:** `osd/`, `runcommand/`, `userswitcher/`, `windowswitcher/` ve `desktopswitcher/` Breeze düzenleri üzerine Pisi Linux görselleriyle hazırlanmıştır.
 
 ### Renk paleti
 
@@ -44,10 +52,22 @@ Tek seferde tutarlı bir görünüm kuran varsayılanlar:
 | Bağlantı | `#6DB2D6` |
 | Negatif / pozitif / nötr | `#E06E6E` / `#7EC88C` / `#E0B25C` |
 
+## Depo yapısı
+
+```
+usr/share/
+├── color-schemes/PisilinuxDark.colors
+├── plasma/
+│   ├── desktoptheme/pisilinux-dark/     # Plasma masaüstü teması (SVGZ)
+│   └── look-and-feel/pisilinux-dark/    # Global tema, splash, kilit ve çıkış ekranları
+└── wallpapers/pisilinux-2.4.4-wallpaper/
+```
+
 ## Gereksinimler
 
-- KDE Plasma 6 (tema `X-Plasma-API 5.0` ve Look-and-Feel `X-Plasma-APIVersion 2` kullanır)
-- Breeze araç takımı ve pencere dekorasyonu
+- KDE Plasma 6 (tema `X-Plasma-API 5.0`, Look-and-Feel `X-Plasma-APIVersion 2` kullanır)
+- `plasma-workspace` — kilit ve çıkış ekranlarının kullandığı `org.kde.plasma.private.sessions` modülü için
+- Breeze görünüm ve his bileşenleri (`org.kde.breeze.components`) ve Breeze pencere dekorasyonu
 - Tam görünüm için isteğe bağlı: `kora` simge teması, `Mevlana` imleç teması
 
 ## Kurulum
@@ -89,7 +109,7 @@ Tek tek uygulamak yerine yalnızca renk şemasını denemek için:
 plasma-apply-colorscheme PisilinuxDark
 ```
 
-veya
+veya tüm global temayı uygulamak için:
 
 ```sh
 lookandfeeltool -a pisilinux-dark
@@ -106,6 +126,12 @@ sudo rm -rf /usr/share/plasma/desktoptheme/pisilinux-dark \
 
 Kullanıcıya özel kurulum yaptıysanız aynı yolları `~/.local/share` altında silin.
 
+## Sürüm notları
+
+- Kilit ekranındaki geçersiz `components/artwork/background.png` referansı kaldırıldı; arka plan artık paket içindeki `lockscreen/background.png` dosyasından yükleniyor.
+- Plasma 5 tabanlı oturum kapatma ekranı, Plasma 6 uyumlu Breeze bileşenleriyle yeniden yazıldı (`Logout.qml`, `LogoutButton.qml`, `timer.js`).
+- Önizleme görselleri (`preview.png`, `lockscreen.png`) güncellendi.
+
 ## Paketleme notları
 
 Depo, `usr/` kök yapısını koruduğu için `/` dizinine açılarak kurulabilir. Pisi Linux için `pspec.xml`/`actions.py` tabanlı paketleme yapılacaksa `usr/` ağacı olduğu gibi `$install_dir` içine kopyalanmalı, `metadata.json` dosyalarındaki sürüm alanları paket sürümüyle eşitlenmelidir.
@@ -119,3 +145,5 @@ Depo, `usr/` kök yapısını koruduğu için `/` dizinine açılarak kurulabili
 ## Lisans
 
 Depo kökündeki `LICENSE` dosyası **GNU GPL v3** metnini içerir. Masaüstü teması ve Look-and-Feel paketi GPLv3, duvar kağıdı LGPLv3 olarak işaretlenmiştir. Yeniden dağıtımda ilgili bileşenin `metadata.json` dosyasındaki lisansı esas alın.
+
+Oturum kapatma ekranı QML dosyaları KDE Breeze projesinden türetilmiştir ve `GPL-2.0-or-later` lisansı altındadır; dosya başlarındaki SPDX başlıkları korunmuştur.
