@@ -10,7 +10,7 @@
         "Description": "Pisi Linux Dark for Plasma6",
         "EnabledByDefault": true,
         "Id": "pisilinux-dark",
-        "License": "LGPL",
+        "License": "GPLv3",
         "Name": "Pisi Linux Dark",
         "Version": "1.0",
         "Website": "https://pisilinux.org"
