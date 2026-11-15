@@ -88,8 +88,8 @@ ForegroundPositive=126,200,140
 ForegroundVisited=168,148,214
 
 [General]
-ColorScheme=pisilinux-dark
-Name=pisilinux-dark
+ColorScheme=PisilinuxDark
+Name=PisilinuxDark
 shadeSortColumn=true
 
 [KDE]
