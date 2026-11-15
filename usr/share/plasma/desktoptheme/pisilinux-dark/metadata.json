@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "erkanisik@pisilinux.org",
+                "Name": "Erkan İŞİK"
+            }
+        ],
+        "Category": "",
+        "Description": "Pisi Linux Dark for Plasma6",
+        "EnabledByDefault": true,
+        "Id": "pisilinux-dark",
+        "License": "LGPL",
+        "Name": "Pisi Linux Dark",
+        "Version": "1.0",
+        "Website": "https://pisilinux.org"
+    },
+    "X-Plasma-API": "5.0"
+}

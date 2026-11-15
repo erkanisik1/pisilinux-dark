@@ -1,0 +1,15 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "mrtthings@gmail.com",
+                "Name": "Murat Özgün",
+                "Name[tr]": "Murat Özgün"
+            }
+        ],
+        "Id": "pisilinux-2.4.4-wallpaper",
+        "License": "LGPLv3",
+        "Name": "pisilinux 2.4.4",
+        "Name[tr]": "pisilinux 2.4.4"
+    }
+}
